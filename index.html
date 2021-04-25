@@ -66,7 +66,7 @@
             }
 
             .disclaimer {
-                font-size: 16px;
+                font-size: 14px;
             }
             
 
@@ -74,11 +74,21 @@
 
         <script type="text/javascript">
             $(document).ready( function () {
-                $('#calculate').click(function () {
+                $('#calculate').click( function () {
+                    calculate();
+                });
+
+                $('#calculatorForm').submit(function (e) {
+                    e.preventDefault();
+                    calculate();
+                });
+
+                function calculate() {
                     
                     var bs = parseFloat($('#backsquat').val().replace(',', '.'));
                     if (isNaN(bs)) {
                         $('#invalidnumber').show();
+                        $('.result').hide();    
                         return;
                     }
                     var sn = bs * 0.65;
@@ -89,7 +99,7 @@
 
                     $('.result').show();
 
-                });
+                }
             });
         </script>
     </head>
@@ -99,45 +109,45 @@
             <div class="row text-center">
                 <div class="col-sm-12 text-center">
                     <h1>Calculadora de Metas de Levantamento de Peso</h1>
-                    <strong>v1.0</strong>
+                    <strong>v1.1</strong>
                 </div>
                 <div class="col-sm-12 mr-4 ml-4 mb-2 text-center">
                     Esta calculadora apresenta apenas números de referências para suas metas de levantamento de peso, em caráter apenas informativo. 
                 </div>
 
             </div>
-            <form class="p-2">
-            <div class="row">
-                
-                <div class="col-md-3 col-sm-1">
-                </div>
-                <div class="col-md-6 col-sm-10">
-                    <div class="form-control text-center">
-                        <label>BacksQuat:</label>
+            <form id="calculatorForm" class="p-2">
+                <div class="row">
+                    
+                    <div class="col-md-3 col-sm-1">
                     </div>
-                    <div class="input-group mb-3 text-center">
-                        <input type="number" class="form-control text-center" id="backsquat" placeholder="O máximo levantado em KG">
-                        <span class="input-group-text" id="addonKg">Kg</span>
-                    </div>
-                    <div id="invalidnumber" class="mb-3 text-center alert-warning">
-                        Digite o peso do seu backsquat!
-                    </div>
-                    <div class="mb-3 text-center">
-                        <button type="button" class="p-2" id="calculate">CALCULAR</button>
-                    </div>
-                    <div class="mb-3 result text-center alert-warning disclaimer">
-                        <strong>IMPORTANTE: Você deve buscar orientações com seu educador físico para garantir sua segurança sobre capacidades e segurança das atividades físicas.</strong>
-                    </div>
-                    <div class="mb-3 result text-center head-meta-snatch">
-                        Snatch: <strong><span id="snatch"></span>Kg</strong>
-                    </div>
-                    <div class="mb-3 result text-center head-meta-cj">
-                        Clean & Jerk: <strong><span id="cleanandjerk"></span>Kg</strong>
-                    </div>
+                    <div class="col-md-6 col-sm-10">
+                        <div class="form-control text-center">
+                            <label>BacksQuat:</label>
+                        </div>
+                        <div class="input-group mb-3 text-center">
+                            <input type="number" class="form-control text-center" id="backsquat" placeholder="O máximo levantado em KG">
+                            <span class="input-group-text" id="addonKg">Kg</span>
+                        </div>
+                        <div id="invalidnumber" class="mb-3 text-center alert-warning">
+                            Digite o peso do seu backsquat!
+                        </div>
+                        <div class="mb-3 text-center">
+                            <button type="button" class="p-2" id="calculate">CALCULAR</button>
+                        </div>
+                        <div class="mb-3 result text-center alert-warning disclaimer">
+                            <strong>IMPORTANTE: Você deve buscar orientações com seu educador físico para garantir sua segurança sobre capacidades e segurança das atividades físicas.</strong>
+                        </div>
+                        <div class="mb-3 result text-center head-meta-snatch">
+                            Snatch: <strong><span id="snatch"></span>Kg</strong>
+                        </div>
+                        <div class="mb-3 result text-center head-meta-cj">
+                            Clean & Jerk: <strong><span id="cleanandjerk"></span>Kg</strong>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
         </div>
     </body>
 </html>
