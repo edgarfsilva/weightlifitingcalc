@@ -1,0 +1,143 @@
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Uma calculadora para metas de levantamento de peso">
+        <meta name="author" content="Edgar Ferreira da Silva e Eduardo Fornaro">
+        <title>Calculadora de Levantamento de Peso</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        <style>
+            body {
+                background-color: #0D1117;
+                color: white;
+            }
+
+            form {
+                background-color: #161B22   ;
+                
+            }
+
+            button {
+                background-color: cornflowerblue;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                width: 100%;
+            }
+
+            .form-control {
+                background-color: #0D1117;
+                border: none;
+            }
+
+            .input-group {
+                border: solid 1px white !important;
+                border-radius: 6px !important;
+                font-size: 28px;
+            }
+
+            .input-group>input {
+                font-size: 28px;
+                color: white;
+            }
+
+            label {
+                color: #58A6FF;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .head-metas {
+                background-color: teal;
+            }
+
+            #invalidnumber {
+                display: none;
+            }
+
+            .result {
+                display: none;
+                font-size: 28px;
+            }
+
+            .disclaimer {
+                font-size: 16px;
+            }
+            
+
+        </style>
+
+        <script type="text/javascript">
+            $(document).ready( function () {
+                $('#calculate').click(function () {
+                    
+                    var bs = parseFloat($('#backsquat').val().replace(',', '.'));
+                    if (isNaN(bs)) {
+                        $('#invalidnumber').show();
+                        return;
+                    }
+                    var sn = bs * 0.65;
+                    var cj = bs * 0.85;
+
+                    $('#snatch').text(sn.toFixed(1).toString().replace('.', ','));
+                    $('#cleanandjerk').text(cj.toFixed(1).toString().replace('.', ','));
+
+                    $('.result').show();
+
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="row text-center">
+                <div class="col-sm-12 text-center">
+                    <h1>Calculadora de Metas de Levantamento de Peso</h1>
+                    <strong>v1.0</strong>
+                </div>
+                <div class="col-sm-12 mr-4 ml-4 mb-2 text-center">
+                    Esta calculadora apresenta apenas números de referências para suas metas de levantamento de peso, em caráter apenas informativo. 
+                </div>
+
+            </div>
+            <form class="p-2">
+            <div class="row">
+                
+                <div class="col-md-3 col-sm-1">
+                </div>
+                <div class="col-md-6 col-sm-10">
+                    <div class="form-control text-center">
+                        <label>BacksQuat:</label>
+                    </div>
+                    <div class="input-group mb-3 text-center">
+                        <input type="number" class="form-control text-center" id="backsquat" placeholder="O máximo levantado em KG">
+                        <span class="input-group-text" id="addonKg">Kg</span>
+                    </div>
+                    <div id="invalidnumber" class="mb-3 text-center alert-warning">
+                        Digite o peso do seu backsquat!
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button type="button" class="p-2" id="calculate">CALCULAR</button>
+                    </div>
+                    <div class="mb-3 result text-center alert-warning disclaimer">
+                        <strong>IMPORTANTE: Você deve buscar orientações com seu educador físico para garantir sua segurança sobre capacidades e segurança das atividades físicas.</strong>
+                    </div>
+                    <div class="mb-3 result text-center head-meta-snatch">
+                        Snatch: <strong><span id="snatch"></span>Kg</strong>
+                    </div>
+                    <div class="mb-3 result text-center head-meta-cj">
+                        Clean & Jerk: <strong><span id="cleanandjerk"></span>Kg</strong>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+        </div>
+    </body>
+</html>
