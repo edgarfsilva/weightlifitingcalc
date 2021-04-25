@@ -53,7 +53,7 @@
             }
 
             .head-metas {
-                background-color: teal;
+                color:aquamarine;
             }
 
             #invalidnumber {
@@ -99,6 +99,7 @@
                     $('#cleanandjerk').text(cj.toFixed(1).toString().replace('.', ','));
 
                     $('.result').show();
+                     location.href = '#result';
 
                 }
             });
@@ -136,13 +137,14 @@
                         <div class="mb-3 text-center">
                             <button type="button" class="p-2" id="calculate">CALCULAR</button>
                         </div>
+                        <a name="result"></a>
                         <div class="mb-3 result text-center alert-warning disclaimer">
                             <strong>IMPORTANTE: Você deve buscar orientações com seu educador físico para garantir sua segurança sobre capacidades e segurança das atividades físicas.</strong>
                         </div>
-                        <div class="mb-3 result text-center head-meta-snatch">
+                        <div class="mb-3 result text-center head-metas">
                             Snatch: <strong><span id="snatch"></span>Kg</strong>
                         </div>
-                        <div class="mb-3 result text-center head-meta-cj">
+                        <div class="mb-3 result text-center head-metas">
                             Clean & Jerk: <strong><span id="cleanandjerk"></span>Kg</strong>
                         </div>
 
